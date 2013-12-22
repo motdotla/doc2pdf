@@ -61,7 +61,7 @@ func main() {
     }
 
     // Prepare the request and headers
-    req, err := http.NewRequest("POST", "http://www.doc2pdf.net/convert/document.pdf", body)
+    req, err := http.NewRequest("POST", DOC2PDF_ENDPOINT, body)
     if err != nil {
       log.Fatal(err)
     }
