@@ -5,13 +5,31 @@ Convert Word documents to PDFs. Go wrapper for [doc2pdf.net](http://doc2pdf.net)
 ## Usage
 
 ```bash
-doc2pdf --input /path/to/word.doc --output /desired/path/to/converted.pdf
+package main
+
+import (
+  "fmt"
+  doc2pdf "github.com/scottmotte/doc2pdf"
+)
+
+func main() {
+  path, err := doc2pdf.Convert("/path/to/word.doc", "/desired/path/to/converted.pdf")
+  if err != nil {
+    fmt.Println(err)
+  }
+
+  fmt.Println(path)
+}:
 ```
 
 ## Installation
 
 ```bash
-git clone https://github.com/scottmotte/doc2pdf.git
-cd doc2pdf
-go install
+$ go get github.com/scottmotte/doc2pdf
+```
+
+## Running Tests
+
+```bash
+go test
 ```
