@@ -2,6 +2,7 @@ package doc2pdf
 
 import (
   "bytes"
+  "errors"
   "io"
   "io/ioutil"
   "mime/multipart"
@@ -11,9 +12,18 @@ import (
 )
 
 const VERSION           = "0.0.1"
-const DOC2PDF_ENDPOINT  = "http://www.doc2pdf.net/convert/document.pdf" 
+const DOC2PDF_ENDPOINT  = "http://www.doc2pdf.net/convert/document.pdf"
 
 func Convert(input_path string, output_path string) (string, error) {
+  if len(input_path) == 0 {
+    err := errors.New("Missing input path")
+    return "", err
+  }
+  if len(output_path) == 0 {
+    err := errors.New("Missing output path")
+    return "", err
+  }
+
   // Get the file data from the word doc
   file, err := os.Open(input_path)
   if err != nil {

@@ -6,13 +6,25 @@ import (
 )
 
 func TestConvert(t *testing.T) {
-  output, err := doc2pdf.Convert("test/go.doc", "test/go.pdf")
-
-  t.Log(output)
-  t.Log(err)
-
+  output, _ := doc2pdf.Convert("test/go.doc", "test/go.pdf")
 
   if len(output) == 0 {
     t.Errorf("Output was blank")
+  }
+}
+
+func TestMissingInput(t *testing.T) {
+  _, err := doc2pdf.Convert("", "test/go.pdf")
+
+  if err == nil {
+    t.Errorf("There should have been an error and there was not.")
+  }
+}
+
+func TestMissingOutput(t *testing.T) {
+  _, err := doc2pdf.Convert("test/go.doc", "")
+
+  if err == nil {
+    t.Errorf("There should have been an error and there was not.")
   }
 }
