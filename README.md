@@ -19,7 +19,7 @@ func main() {
   }
 
   fmt.Println(path)
-}:
+}
 ```
 
 ## Installation
