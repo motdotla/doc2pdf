@@ -4,7 +4,6 @@ import (
   "bytes"
   "errors"
   "io"
-  "io/ioutil"
   "mime/multipart"
   "net/http"
   "os"
@@ -60,13 +59,15 @@ func Convert(input_path string, output_path string) (string, error) {
   if err != nil {
     return "", err
   }
+  defer res.Body.Close()
 
   // Read and save the repsonse
-  responseBody, err := ioutil.ReadAll(res.Body);
+  out, err := os.Create(output_path)
   if err != nil {
     return "", err
   }
-  ioutil.WriteFile(output_path, responseBody, 0777)
+  defer out.Close()
+  io.Copy(out, res.Body)
 
   return output_path, nil
 }
