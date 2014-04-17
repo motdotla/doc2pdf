@@ -2,6 +2,8 @@
 
 Convert Word documents to PDFs. Go wrapper for [doc2pdf.net](http://doc2pdf.net). 
 
+[![BuildStatus](https://travis-ci.org/scottmotte/doc2pdf.png?branch=master)](https://travis-ci.org/scottmotte/doc2pdf)
+
 ## Usage
 
 ```bash
