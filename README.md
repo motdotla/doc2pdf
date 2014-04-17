@@ -31,5 +31,5 @@ $ go get github.com/scottmotte/doc2pdf
 ## Running Tests
 
 ```bash
-go test
+go test -v
 ```
